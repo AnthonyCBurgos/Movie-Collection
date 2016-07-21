@@ -1,0 +1,21 @@
+{
+  "name": "movie_collection",
+  "description": "",
+  "main": "app.js",
+  "authors": [
+    "Anthony Burgos <anthonycburgos@hotmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/AnthonyCBurgos/Movie-Collection",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap-css": "^3.3.6",
+    "angular": "^1.5.7"
+  }
+}

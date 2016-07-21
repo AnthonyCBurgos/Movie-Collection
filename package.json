@@ -1,0 +1,45 @@
+{
+  "name": "movie_collection",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://anthonycburgos@github.com/AnthonyCBurgos/Movie-Collection.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AnthonyCBurgos/Movie-Collection/issues"
+  },
+  "homepage": "https://github.com/AnthonyCBurgos/Movie-Collection#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "bower": "^1.7.9",
+    "browserify": "^13.0.1",
+    "express": "^4.14.0",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-react": "^3.1.0",
+    "gulp-sass": "^2.3.2",
+    "gulp-server-livereload": "^1.8.1",
+    "gulp-util": "^3.0.7",
+    "gulp-watch": "^4.3.8",
+    "jade": "^1.11.0",
+    "mongoose": "^4.5.5",
+    "node-jsx": "^0.13.3",
+    "node-notifier": "^4.6.0",
+    "react": "^15.2.1",
+    "reactify": "^1.1.1",
+    "react-dom": "^15.2.1",
+    "underscore": "^1.8.3",
+    "vinyl-source-stream": "^1.1.0",
+    "watchify": "^3.7.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.9.2"
+  }
+}
