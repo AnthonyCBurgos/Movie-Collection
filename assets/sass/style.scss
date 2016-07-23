@@ -1,3 +1,33 @@
-.black {
-  color: black
+body {
+	margin-left: 30px;
+	display: inline-block;
+	width: 100%;
+}
+
+.header {
+  color: black;
+  padding-left: 40px;
+}
+
+.input-group-addon {
+	width: 100px;
+}
+
+.input-group .form-control {
+	margin-right: 200px;
+}
+
+.rating-container {
+	//float: left;
+	margin-left: 20px;
+	margin-top: 3px;
+}
+
+#checkboxAdd {
+	margin-left: 20px;
+	margin-top: 7px;
+}
+
+.addButton {
+	margin-left: 250px;
 }

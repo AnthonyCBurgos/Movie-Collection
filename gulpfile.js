@@ -9,6 +9,7 @@ var server = require('gulp-server-livereload');
 var concat = require('gulp-concat');
 var sass = require('gulp-sass');
 var watch = require('gulp-watch');
+var nodemon = require('gulp-nodemon');
 
 var notify = function(error) {
   var message = 'In: ';
@@ -33,7 +34,7 @@ var notify = function(error) {
 };
 
 var bundler = watchify(browserify({
-  entries: ['./public/main.jsx'],
+  entries: ['./views/index.jsx'],
   transform: [reactify],
   extensions: ['.jsx'],
   debug: true,
@@ -55,6 +56,13 @@ gulp.task('build', function() {
   bundle()
 });
 
+gulp.task('nodemon', function () {
+  nodemon({
+    script: 'server.js',
+    ext: 'js html'
+  })
+})
+
 gulp.task('serve', function(done) {
   gulp.src('')
     .pipe(server({
@@ -62,8 +70,6 @@ gulp.task('serve', function(done) {
         enable: true,
         filter: function(filePath, cb) {
           if(/main.js/.test(filePath)) {
-            cb(true)
-          } else if(/style.css/.test(filePath)){
             cb(true)
           }
         }
@@ -75,11 +81,11 @@ gulp.task('serve', function(done) {
 gulp.task('sass', function () {
   gulp.src('./sass/**/*.scss')
     .pipe(sass().on('error', sass.logError))
-    .pipe(concat('style.css'))
+    //.pipe(concat('style.css'))
     .pipe(gulp.dest('./'));
 });
 
-gulp.task('default', ['build', 'serve', 'sass', 'watch']);
+gulp.task('default', ['build', 'nodemon', 'serve', 'sass', 'watch']);
 
 gulp.task('watch', function () {
   gulp.watch('./sass/**/*.scss', ['sass']);

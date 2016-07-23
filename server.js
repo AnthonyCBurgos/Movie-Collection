@@ -1,5 +1,4 @@
 var express = require('express'),
-  jade = require('jade'),
   http = require('http'),
   mongoose = require('mongoose'),
   config = require('./config/config'),
@@ -8,15 +7,16 @@ var express = require('express'),
 var app = express();
 var port = process.env.PORT || 8080;
 
-app.set('view engine', 'jade');
+app.use('/', function(req, res, next) {
+	res.setHeader("Access-Control-Allow-Origin", "*");
+	res.setHeader("Access-Control-Allow-Credentials", "true");
+    res.setHeader("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
+    res.setHeader("Access-Control-Allow-Headers", "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers");
+	next();
+});
+
 mongoose.connect(config.getConnection());
 movieController(app);
-
-app.use("/", express.static(__dirname + "/assets/"));
-app.use("/app/", express.static(__dirname + "/app/"));
-app.get('/', function(req, res) {
-	res.render("index");
-});
 
 var server = http.createServer(app).listen(port, function() {
   console.log('Express server listening on port ' + port);
