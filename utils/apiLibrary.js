@@ -1,17 +1,29 @@
 require('whatwg-fetch');
 var rootUrl = 'http://localhost:8080/api/';
 
-module.exports = window.api = {
+module.exports = {
 	get: function(url) {
-		return fetch(rootUrl + url, {
-			//headers: {
-				//"Access-Control-Allow-Origin": "*"
-			//}
-		}).then(function(response){
+		return fetch(rootUrl + url)
+		.then(function(response){
 			return response.json()
 		})
-		//.then(function(data){
-			//return data;
-		//})
+	},
+	add: function(state, rating) {
+		return fetch(rootUrl + 'addUpdateMovie', {
+			method: 'post',
+			headers: {
+				'Accept': 'application/json',
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({
+				"title": state.titleField.toString(),
+				"actors": state.actorField.toString(),
+				"genre": state.genreField.toString(),
+				"year": state.yearField,
+				"rating": rating
+			})
+		}).then(function(response){
+			return response.status
+		})
 	}
 };

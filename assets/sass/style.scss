@@ -4,9 +4,18 @@ body {
 	width: 100%;
 }
 
+.content {
+	opacity: 0;
+	transition: opacity 1s ease-in;
+}
+
+.loaded {
+	opacity: 1;
+}
+
 .header {
-  color: black;
-  padding-left: 40px;
+	color: black;
+	padding-left: 40px;
 }
 
 .input-group-addon {
@@ -15,6 +24,10 @@ body {
 
 .input-group .form-control {
 	margin-right: 200px;
+}
+
+table .rating {
+	padding-bottom: 15px;
 }
 
 .rating-container {
@@ -30,4 +43,29 @@ body {
 
 .addButton {
 	margin-left: 250px;
+	margin-top: 20px;
+}
+
+.table {
+	margin-left: 15px;
+	margin-top: 10px;
+}
+
+th {
+	padding-bottom: 10px;
+}
+
+#ratingHeader {
+	padding-left: 30px;
+}
+
+.panel-heading span {
+	float: left;
+	margin-right: 50px;
+	font-size: 150%;
+}
+
+#searchField {
+	width: 50%;
+	float: left;
 }

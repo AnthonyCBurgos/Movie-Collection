@@ -16,7 +16,6 @@ module.exports = function(app) {
 				, genre: 'Horror'
 				, year: 2016
 				, rating: 5
-				, watched: false
 			},
 			{
 				title: 'A Supertough Kangaroo'
@@ -24,7 +23,6 @@ module.exports = function(app) {
 				, genre: 'Drama'
 				, year: 2015
 				, rating: 1
-				, watched: true
 			},
 			{
 				title: 'Uncle Sam'
@@ -32,7 +30,6 @@ module.exports = function(app) {
 				, genre: 'Thriller'
 				, year: 2017
 				, rating: 1
-				, watched: false
 			}
 		];
 
@@ -54,31 +51,23 @@ module.exports = function(app) {
 	app.get('/api/searchAllFields/:text', function(req, res) {
 		var text = req.params.text;
 		var parsedText = parseInt(text);
-		var isBoolean = null;
-		if (text.toLowerCase() === "true" || text.toLowerCase() === "false") {
-			isBoolean = (text.toLowerCase() === "true");
-			console.log(isBoolean);
-		}
 
 		schema.find({
 			$or: [
 				{
-					title: text
+					title: { $regex : new RegExp(text, "i") }
 				},
 				{
-					genre: text
+					genre: { $regex : new RegExp(text, "i") }
 				},
 				{
-					actors: text
+					actors: { $regex : new RegExp(text, "i") }
 				},
 				{
 					year: parsedText || null
 				},
 				{
 					rating: parsedText || null
-				},
-				{
-					watched: isBoolean
 				}
 			]
 		}, function(err, results) {
@@ -106,7 +95,6 @@ module.exports = function(app) {
 				, genre: req.body.genre
 				, year: req.body.year
 				, rating: req.body.rating
-				, watched: req.body.watched
 			}, function(err, results) {
 				if (err)
 					throw err
@@ -121,7 +109,6 @@ module.exports = function(app) {
 				, genre: req.body.genre
 				, year: req.body.year
 				, rating: req.body.rating
-				, watched: req.body.watched
 			});
 
 			newMovie.save(function(err) {
