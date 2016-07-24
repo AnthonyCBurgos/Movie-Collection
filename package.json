@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/AnthonyCBurgos/Movie-Collection#readme",
   "dependencies": {
+    "bacon": "0.0.1",
     "body-parser": "^1.15.2",
     "bower": "^1.7.9",
     "browserify": "^13.0.1",

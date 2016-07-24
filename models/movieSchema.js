@@ -7,7 +7,6 @@ var movieCollectionSchema = new Schema({
 	, genre: String
 	, year: Number
 	, rating: Number
-	, watched: Boolean
 });
 
 var Movies = mongoose.model('Movies', movieCollectionSchema);

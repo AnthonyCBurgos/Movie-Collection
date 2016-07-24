@@ -30,7 +30,23 @@ module.exports = Reflux.createStore({
 	  			}
 	  		}.bind(this));
   	},
+  	removeMovie: function(id) {
+	  	return Api.delete(id)
+	  		.then(function(response) {
+	  			if (response === 200) {
+	  				this.getAllMovies();
+	  			}
+	  		}.bind(this));
+  	},
   	movieListUpdated: function() {
   		this.trigger('change', this.movies);
+  	},
+  	updateMovie: function(newItems) {
+	  	return Api.update(newItems)
+	  		.then(function(response) {
+	  			if (response === 200) {
+	  				this.getAllMovies();
+	  			}
+	  		}.bind(this));
   	}
 })
